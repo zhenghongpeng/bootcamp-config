@@ -1,6 +1,6 @@
 ---
 bootstrap:
-  # This is a template bootstrap CLI file that will need to be completed. For a more complete example look at
+# This is a template bootstrap CLI file that will need to be completed. For a more complete example look at
   # https://github.com/cognitedata/inso-bootstrap-cli/blob/main/configs/config-deploy-example-v2.yml
 
     features:
@@ -61,24 +61,45 @@ bootstrap:
                 idp-source-id: 0ddbfb34-d9ab-41a5-9baf-8f5bd13520b4
                 idp-source-name: bootcamp-43-test-admin
               - cdf-group: cdf:all:owner
-                idp-source-id: 0ddbfb34-d9ab-41a5-9baf-8f5bd13520b4 # for the AAD Group to be matched to cdf-group
+                idp-source-id: f788c4ff-9455-49be-ae63-7c15089cd747 # for the AAD Group to be matched to cdf-group
                 idp-source-name: bootcamp-43-test-all-owner # i.e. bootcamp-01-test-all-owner
               - cdf-group: cdf:all:read
-                idp-source-id: 0ddbfb34-d9ab-41a5-9baf-8f5bd13520b4 # for the AAD Group to be matched to cdf-group
+                idp-source-id: 76751754-ef14-4e5a-91ba-65e745e996e9 # for the AAD Group to be matched to cdf-group
                 idp-source-name: bootcamp-43-test-all-read # i.e. bootcamp-01-test-all-read
+    # Support multiple CDF Projects, like dev/test/prod in one config.
+        - cdf-project: cdf-bootcamp-43-prod # i.e. bootcamp-01-test
+          mappings:
+              - cdf-group: cdf:root
+                idp-source-id: 08af2541-0954-4b98-8217-8b9f1336501a
+                idp-source-name: bootcamp-43-prod-admin
+              - cdf-group: cdf:all:owner
+                idp-source-id: 5b10c18b-e941-4ab8-9fea-1cd92f022765 # for the AAD Group to be matched to cdf-group
+                idp-source-name: bootcamp-43-prod-all-owner # i.e. bootcamp-01-test-all-owner
+              - cdf-group: cdf:all:read
+                idp-source-id: 73c8a441-457c-4bcb-aa47-2e95a53264c0 # for the AAD Group to be matched to cdf-group
+                idp-source-name: bootcamp-43-prod-all-read # i.e. bootcamp-01-test-all-read
 
 
     namespaces:
         # Typical config will have a namespace for data sources ("src") and a namespace for use cases ("uc")
-        - ns-name: <Namespace name>
+        - ns-name: src
           description: Data sources for the Ice Cream Factory # HINT
 
           # Node names will normally follow src:001:srcname or uc:001:usecasename naming convention
           ns-nodes:
-              - node-name: <Node name>
+              - node-name: src:001:sap
                 description: Data from SAP # HINT
-        # HINT: Add another namespace below
+              - node-name: src:002:opcua
+                description: Data from opcua # HINT
+        # Typical config will have a namespace for data sources ("src") and a namespace for use cases ("uc")
+        - ns-name: uc
+          description: Data use case for the Ice Cream Factory  # HINT
 
+          # Node names will normally follow src:001:srcname or uc:001:usecasename naming convention
+          ns-nodes:
+              - node-name: src:001:oee
+                description: use case for oee # HINT
+        # HINT: Add another namespace below
 
 # de-facto standards for CDF CogniteClient and logger configuration.
 # Following the same parameter structure as the 'Cognite Python Extractor-Utilities'
