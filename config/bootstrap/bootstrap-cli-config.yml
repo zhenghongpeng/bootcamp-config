@@ -97,7 +97,7 @@ bootstrap:
 
           # Node names will normally follow src:001:srcname or uc:001:usecasename naming convention
           ns-nodes:
-              - node-name: src:001:oee
+              - node-name: uc:001:oee
                 description: use case for oee # HINT
         # HINT: Add another namespace below
 
