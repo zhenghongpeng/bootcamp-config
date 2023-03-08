@@ -130,4 +130,4 @@ dmypy.json
 
 #pyCharm
 .idea
-**.DS_Store**
+**.DS_Storepoetry run pre-commit run --all-files**
